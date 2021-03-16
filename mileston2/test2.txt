@@ -1,0 +1,1 @@
+for $tuple in join (for $s in doc("j_caesar.xml")//SPEAKER return <tuple> { <s> {$s} </s> } </tuple>, for $a in doc("j_caesar.xml")//ACT, $sp in $a//SPEAKER, $stxt in $s/text() where $stxt = "CAESAR" return <tuple> { <a> {$a} </a>, <sp> {$sp} </sp>, <stxt> {$stxt} </stxt> } </tuple>, [s], [sp]) return <act> { $tuple/a/TITLE/text()/* } </act>
